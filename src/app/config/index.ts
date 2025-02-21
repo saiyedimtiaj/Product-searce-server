@@ -10,7 +10,6 @@ export default {
   jwt_refresh_secret: process.env.JWT_REFRESH_SECRET,
   jwt_refresh_expires_in: process.env.JWT_REFRESH_EXPIREIN,
   node_env: process.env.NODE_ENV,
-  server_url: process.env.SERVER_URL,
   smtp_mail: process.env.SMTP_Mail,
   smtp_password: process.env.SMTP_PASSWORD,
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

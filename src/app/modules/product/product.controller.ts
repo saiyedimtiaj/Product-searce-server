@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from "http-status";
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import { TProduct } from "./product.interface";
-import config from "../../config";
 import Product from "./product.model";
 import AppError from "../../errors/AppError";
 import { Types } from "mongoose";
@@ -33,7 +33,7 @@ const createProduct = catchAsync(async (req, res) => {
 });
 
 const getAllProducts = catchAsync(async (req, res) => {
-  let query: Record<string, any> = {};
+  const query: Record<string, any> = {};
 
   // If the user is a seller, filter by their ID
   if (req?.user?.role === "saller") {
@@ -101,7 +101,7 @@ const updateProduct = catchAsync(async (req, res) => {
   let image = product.image;
 
   if (file) {
-    image = image = `${config.server_url}/${file?.path}`;
+    image = `${file?.path}`;
   }
 
   const payload: TProduct = {
@@ -209,7 +209,7 @@ const getProducts = catchAsync(async (req, res) => {
 });
 
 const getProductsBySearch = catchAsync(async (req, res) => {
-  const { searchTerms, location, category } = req.query;
+  const { searchTerms } = req.query;
 
   const activeUsers = await Users.find({
     status: "Active",
