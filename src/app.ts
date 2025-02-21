@@ -11,10 +11,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://search-product-fawn-one.vercel.app",
-    ],
+    origin: ["http://localhost:3000", "https://www.lastiendas.pe"],
     credentials: true,
   })
 );
