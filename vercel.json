@@ -1,9 +1,16 @@
 {
   "version": 2,
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "dist/server.js",
+      "use": "@vercel/node"
     }
-  },
-  "routes": [{ "src": "/(.*)", "dest": "src/server.ts" }]
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/server.js",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+    }
+  ]
 }
